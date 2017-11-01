@@ -80,7 +80,7 @@ public class Sort {
 	/**********************/
 	/*** Display array ***/
 	/**********************/
-	public void display(int line, String header) {
+	 public void display(int line, String header) {
 		/*** Integer Formatter - three digits ***/
 		NumberFormat FI = NumberFormat.getInstance();
 		FI.setMinimumIntegerDigits(3);
@@ -104,9 +104,10 @@ public class Sort {
 
 	/* Sort array using insertion sort */
 
-	public void insertion() {
+	 public void insertion() {
 		/* loop through array */
 		for (int i = 1; i < usedSize; i++) {
+			compIS++;
 
 			/* store the next value to insert into array */
 			int key = A[i];
@@ -127,17 +128,12 @@ public class Sort {
 		}
 		/* catch last comparison as method exits while loop */
 		compIS++;
-		/* print out sorted array */
-		System.out.println("\n\nAfter Insertion Sort: ");
-		for (int k = 0; k < usedSize; k++) {
-			System.out.println(A[k] + " ");
-
-		}
+		
 
 	}
 
 	/* Sort array using quicksort */
-	public void quick(int L, int R) {
+	 public void quick(int L, int R) {
 		/* ensure there is more than one element in array */
 		if (R > L) {
 			/* split array in two */
@@ -149,20 +145,17 @@ public class Sort {
 			quick(pLoc +1, R);
 			//pLoc++;
 		
-		}
-		//System.out.println("\n\nAfter  QuickSort: ");
-		//for (int i = 0; i < usedSize; i++) {
-			//System.out.println(A[i] + " ");
+		} 
 		}
 	
 
 	   
 	    
 	
-	//}
+	
 
 	/* partitions array for quicksort */
-	public int partition(int L, int R) {
+	 public int partition(int L, int R) {
 		/* Select pivot */
 		int pivot = A[R];
 		/* initialise scanning pointers */
@@ -198,40 +191,39 @@ public class Sort {
 		
 	}
 
-	/* swaps elements in quicksort */
-	public void swap(int i, int j) {
+	/* swaps elements in array */
+	 public void swap(int i, int j) {
 		int temp = A[i];
 		A[i] = A[j];
 		A[j] = temp;
 	}
 	
-	public void newSort() {
+	 public void newSort() {
 		int position = 0;
 		while (position < usedSize) {
 			int min = findMinFrom(position);
-			for (int i = position; i < usedSize;) {
+			for (int i = position; i < usedSize - 1; i++) {
 
 				if (A[i] == min) {
 					swap(A[i], position);
-					position = position+1;
 				}
+					position = position+1;
+				
 			}
 		}
-		System.out.println("\n\nAfter newsort: ");
-		for (int i = 0; i < usedSize; i++) {
-			System.out.println(A[i] + " ");
-		}
+		
+		
 	}
 
-	public int findMinFrom( int position) {
+	public int findMinFrom(int position) {
 		int min = A[position];
-		for (int i = position; i< usedSize;){
-			if(A[i]<min){
+		for (int i = position; i < usedSize; i++) {
+			if (A[i] < min) {
 				min = A[i];
 			}
 		}
 		return min;
-		
+
 	}
 	
 	
