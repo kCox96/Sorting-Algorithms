@@ -3,7 +3,7 @@ import java.lang.reflect.Array;
 /*************************************************/
 /*** Simple test class for Sort class          ***/
 /***                                           ***/
-/*** Author: Jason Steggles    20/09/2017      ***/
+/*** Author: Kiana Cox   01/11/2017      ***/
 /*************************************************/
 
 
@@ -20,20 +20,30 @@ public class TestSort
         
         /** Display array **/
         sortTest.display(10,"Input Array 1");
+        
         /*apply insertion sort to array*/
-        //sortTest.insertion(); 
+        sortTest.insertion();
+        /*display sorted array*/
+        sortTest.display(10, "\n\nInsertion sorted array");
         
-        //sortTest.readIn("test1.txt");
+        /*read in test data into array*/
+        sortTest.readIn("test1.txt");
+        /*apply quicksort to array*/
         sortTest.quick(sortTest.getLeftElement(), sortTest.getRightElement());
-        //sortTest.newSort();
+        /*display quicksorted array*/
+        sortTest.display(10, "\n\nQuicksorted array");
         
+        /*read in test data into array*/
+        sortTest.readIn("test1.txt");
+        /*apply newsort to array*/
+        sortTest.newSort();
+        /*display newsorted array*/
+        sortTest.display(10, "\n\nNewsorted array");
         /** Display comparison counters **/
-        System.out.println("Quicksort comparison counter: " + sortTest.compQS);
+        System.out.println("\n\nQuicksort comparison counter: " + sortTest.compQS);
         System.out.println("\n\nInsertion sort comparison counter: " + sortTest.compIS);
 
         
     }
 
 	 
-    
-} /** End of Test class **/
