@@ -136,6 +136,7 @@ public class Sort {
 	 public void quick(int L, int R) {
 		/* ensure there is more than one element in array */
 		if (R > L) {
+			compQS++;
 			/* split array in two */
 			int pLoc = partition(L, R);
 			/* sort left half */
@@ -167,16 +168,19 @@ public class Sort {
 			compQS++;
 			/* move left pointer */
 			while (A[pL] < pivot) {
+				compQS++;
 				pL++;
 			}
 			/* move right pointer */
 			while ((A[pR] >= pivot) && (pR > L)) {
+				compQS++;
 				pR--;
-				//compQS++;
+				
 			}
 			/* swap elements */
-			//compQS++;
+			
 			if (pL < pR) {
+				compQS++;
 				swap(pL, pR);
 				 //L++;
 				 //R--;
