@@ -19,6 +19,8 @@ public class Sort {
 
 	/** Number of elements actually used in array **/
 	private int usedSize;
+	
+	
 
 	/** Global variables for counting sort comparisons **/
 	public int compIS;
@@ -96,7 +98,7 @@ public class Sort {
 			}
 
 			/**
-			 * Display an ar ray element
+			 * Display an array element
 			 **/
 			System.out.print(FI.format(A[i]) + " ");
 		}
@@ -107,6 +109,7 @@ public class Sort {
 	 public void insertion() {
 		/* loop through array */
 		for (int i = 1; i < usedSize; i++) {
+			/*increase counter variable with every comparison*/
 			compIS++;
 
 			/* store the next value to insert into array */
@@ -116,18 +119,19 @@ public class Sort {
 
 			/* check to ensure that the value does not drop off the array */
 			while ((j > 0) && (key < A[j - 1])) {
+				/*increase counter variable with every comparison*/
+				compIS++;
 				/* find correct position for key */
 				A[j] = A[j - 1];
 				j = j - 1;
-				/* increase counter variable with each comparison */
-				compIS++;
+				
+				
 			}
 			/* insert key into correct space */
 			A[j] = key;
 
 		}
-		/* catch last comparison as method exits while loop */
-		compIS++;
+		
 		
 
 	}
@@ -136,6 +140,7 @@ public class Sort {
 	 public void quick(int L, int R) {
 		/* ensure there is more than one element in array */
 		if (R > L) {
+			/*increase variable counter with every comparison*/
 			compQS++;
 			/* split array in two */
 			int pLoc = partition(L, R);
@@ -144,7 +149,7 @@ public class Sort {
 		    
 			/* sort right half */
 			quick(pLoc +1, R);
-			//pLoc++;
+		
 		
 		} 
 		}
@@ -165,25 +170,33 @@ public class Sort {
 		int pL = L;
 		/* repeat until pointers cross */
 		while (pL < pR) {
+			/*increase comparison counter with every comparison*/
 			compQS++;
 			/* move left pointer */
 			while (A[pL] < pivot) {
-				compQS++;
+				/*increase comparison counter with every comparison*/
+				compQS++; 
+				/*move left point up array one place*/
 				pL++;
+				
+				
 			}
 			/* move right pointer */
 			while ((A[pR] >= pivot) && (pR > L)) {
+				/*increase comparison counter with every comparison*/
 				compQS++;
+				/*move right pointer down array one place*/
 				pR--;
 				
 			}
 			/* swap elements */
 			
 			if (pL < pR) {
+				/*increase comparison counter with every comparison*/
 				compQS++;
 				swap(pL, pR);
-				 //L++;
-				 //R--;
+			  
+				 
 			}
 		}
 		
@@ -200,32 +213,51 @@ public class Sort {
 		int temp = A[i];
 		A[i] = A[j];
 		A[j] = temp;
+		
 	}
 	
-	 public void newSort() {
+	 /*sorts array using newsort*/
+	 public void newsort() {
+		 /*initialise position pointer*/
 		int position = 0;
+		/*prevents array out of bounds exception*/
 		while (position < usedSize) {
+		
+			/*find current min value*/
 			int min = findMinFrom(position);
-			for (int i = position; i < usedSize - 1; i++) {
+		
+			for (int i = position; i < usedSize; i++) {
+				
+			/*if current index value is smaller than min value, swap*/
 
 				if (A[i] == min) {
-					swap(A[i], position);
+					
+					swap(i, position);
+					/*increment position pointer*/
+					position++;
 				}
-					position = position+1;
-				
+				/*increment comparison pointer*/	
+				compNewS++;
 			}
 		}
+		}
 		
-		
-	}
-
+	
+    /*find minimum value in array*/
 	public int findMinFrom(int position) {
+		
+       /*set min value to current position pointer*/
 		int min = A[position];
-		for (int i = position; i < usedSize; i++) {
+       /*loop through array to find min value*/
+		for (int i = position + 1; i < usedSize; i++) {
 			if (A[i] < min) {
+
 				min = A[i];
 			}
+			/*increment comparison counter*/
+			compNewS++;
 		}
+        /*return min value*/
 		return min;
 
 	}
@@ -234,6 +266,12 @@ public class Sort {
 				
 			
 		}
+	
+
+
+
+/** End of Sort Class **/
+
 	
 
 
